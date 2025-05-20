@@ -1,4 +1,4 @@
-class No {
+public class No {
     String valor;
     No esquerda, direita;
 
@@ -6,8 +6,13 @@ class No {
         this.valor = valor;
         esquerda = direita = null;
     }
+
+    public int contagemNo(No no){
+        if(no == null){
+            return 0;
+        }
+        return 1 + contagemNo(no.esquerda) + contagemNo(no.direita);
+    }
+
 }
 
-public class Arvore{
-    No raiz;
-}
