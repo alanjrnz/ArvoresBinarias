@@ -50,7 +50,7 @@ public class Arvore {
                 System.out.println(atual.valor);
 
                 if(atual.esquerda != null){
-                    fila.add(atual.esquerda)
+                    fila.add(atual.esquerda);
                 }
                 if(atual.direita != null){
                     fila.add(atual.direita);
@@ -80,25 +80,76 @@ public class Arvore {
         }
     }
 
-
-    public void EmOrdemSemRecursividade(No raiz) {
-        if (raiz == null) return;
-
+    public void emOrdemIterativo(No raiz){
         Stack<No> pilha = new Stack<>();
-        pilha.push(raiz);
+        No atual = raiz;
 
-        while (!pilha.isEmpty()) {
-            No atual = pilha.pop();
-
-            if (atual.direita != null) {
-                pilha.push(atual.direita);
-            }
-            System.out.println(atual.valor + " ");
-
-            if (atual.esquerda != null) {
-                pilha.push(atual.esquerda);
+        while(atual != null || !pilha.isEmpty()){
+            while(atual != null){
+                pilha.push(atual);
+                atual = atual.esquerda;
             }
         }
+        atual = pilha.pop();
+        System.out.println(atual.valor + " ");
+        atual = atual.direita;
+     }
+
+    public void posOrdemIterativo(No raiz){
+        if (raiz == null) { return; }
+
+        Stack<No> pilha1 = new Stack<>();
+        Stack<No> pilha2 = new Stack<>();
+        pilha1.push(raiz);
+
+        while(!pilha1.isEmpty()){
+            No atual = pilha1.pop();
+            pilha2.push(atual);
+
+            if(atual.esquerda != null){
+                pilha1.push(atual.esquerda);
+            }
+            if(atual.direita != null){
+                pilha1.push(atual.direita);
+            }
+        }
+        while(!pilha2.isEmpty()){
+            System.out.println(pilha2.pop().valor + " ");
+        }
+
+    }
+
+
+
+    public int contagemNoIterativo(No raiz){
+        if(raiz == null){ return 0; }
+
+        int contador = 0;
+        Stack<No> pilha = new Stack<>();
+        pilha.add(raiz);
+
+        while(!pilha.isEmpty()){
+            No atual = pilha.pop();
+            contador++;
+
+            if(atual.esquerda != null){
+                pilha.push(atual.esquerda);
+            }
+            if(atual.direita != null){
+                pilha.push(atual.direita);
+            }
+        }
+        return contador;
+    }
+    public int contadorDeFolhas(No raiz){
+        if (raiz == null) return 0;
+        if(raiz.esquerda == null && raiz.direita== null) return 1;
+        return contadorDeFolhas(raiz.esquerda) + contadorDeFolhas(raiz.direita);
+    }
+
+    public int contadorDeFolhasIterativo(No no){
+        /*TODO*/
+    return 5;
     }
 
 }

@@ -1,5 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+   No raiz = new No("A",null ,null);
+   raiz.esquerda = new No("B",null,null);
+   raiz.direita = new No("C",null, null);
+   raiz.esquerda.esquerda = new No("D",null,null);
+   raiz.esquerda.direita = new No("E",null,null);
+   raiz.direita.direita = new No("F", null,null);
+    Arvore arvore = new Arvore(raiz);
+        System.out.println(arvore.contagemNo(raiz));
+        arvore.PercursoPosOrdem(raiz);
+        arvore.PercursoEmOrdem(raiz);
+        arvore.PercursoPreOrdem(raiz);
     }
 }
