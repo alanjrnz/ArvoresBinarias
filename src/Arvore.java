@@ -147,9 +147,40 @@ public class Arvore {
         return contadorDeFolhas(raiz.esquerda) + contadorDeFolhas(raiz.direita);
     }
 
-    public int contadorDeFolhasIterativo(No no){
-        /*TODO*/
-    return 5;
+    public int contadorDeFolhasIterativoPilha(No no){
+        if (no == null) return 0;
+
+        int contador = 0;
+        Stack<No> pilha = new Stack<>();
+        pilha.add(no);
+
+        while(!pilha.isEmpty()){
+            No atual = pilha.pop();
+            if(atual.esquerda == null && atual.direita == null) contador++;
+            if(atual.esquerda != null) pilha.push(atual.esquerda);
+            if(atual.direita != null) pilha.push(atual.direita);
+        }
+        return contador;
+    }
+
+    public int contarNosComFila(No raiz){
+        if (raiz == null) return 0;
+
+        int contador = 0;
+        Queue<No> fila = new LinkedList<>();
+        fila.add(raiz);
+
+        while (!fila.isEmpty()) {
+            No no = fila.poll();
+            contador++;
+            if (no.esquerda != null) {
+                fila.add(no.esquerda);
+            }
+            if (no.direita != null) {
+                fila.add(no.direita);
+            }
+        }
+        return contador;
     }
 
 }
