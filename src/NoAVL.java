@@ -1,11 +1,12 @@
 public class NoAVL {
-    String valor;
+    int valor;
     NoAVL esquerda, direita;
     int Altura;
-    public NoAVL(String valor, NoAVL esquerda, NoAVL direita, int altura) {
+    public NoAVL(int valor) {
         this.valor = valor;
-        this.Altura = altura;
+        this.Altura = 1;
         esquerda = direita = null;
     }
+
 
 }

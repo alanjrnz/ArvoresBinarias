@@ -26,9 +26,9 @@ public class Arvore {
 
     public void PercursoEmOrdem(No no){
         if(no !=null){
-            PercursoPreOrdem(no.esquerda);
+            PercursoEmOrdem(no.esquerda);
             System.out.println(no.valor + " ");
-            PercursoPreOrdem(no.direita);
+            PercursoEmOrdem(no.direita);
         }
     }
 
