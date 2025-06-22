@@ -21,7 +21,7 @@ public class Arvore {
         System.out.println(no.valor + " ");
         PercursoPreOrdem(no.esquerda);
         PercursoPreOrdem(no.direita);
-    }
+        }
     }
 
     public void PercursoEmOrdem(No no){
@@ -37,6 +37,26 @@ public class Arvore {
             PercursoPosOrdem(no.esquerda);
             PercursoPosOrdem(no.direita);
             System.out.println(no.valor);
+        }
+    }
+
+    public void PreOrdemSemRecursividade(No raiz) {
+        if (raiz == null) return;
+
+        Stack<No> pilha = new Stack<>();
+        pilha.push(raiz);
+
+        while (!pilha.isEmpty()) {
+            No atual = pilha.pop();
+            System.out.println(atual.valor + " ");
+
+            if (atual.direita != null) {
+                pilha.push(atual.direita);
+            }
+
+            if (atual.esquerda != null) {
+                pilha.push(atual.esquerda);
+            }
         }
     }
 
@@ -59,26 +79,6 @@ public class Arvore {
         }
     }
 
-
-    public void PreOrdemSemRecursividade(No raiz) {
-        if (raiz == null) return;
-
-        Stack<No> pilha = new Stack<>();
-        pilha.push(raiz);
-
-        while (!pilha.isEmpty()) {
-            No atual = pilha.pop();
-            System.out.println(atual.valor + " ");
-
-            if (atual.direita != null) {
-                pilha.push(atual.direita);
-            }
-
-            if (atual.esquerda != null) {
-                pilha.push(atual.esquerda);
-            }
-        }
-    }
 
     public void emOrdemIterativo(No raiz){
         Stack<No> pilha = new Stack<>();

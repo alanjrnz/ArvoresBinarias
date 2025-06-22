@@ -21,7 +21,7 @@ public class Main {
          arvoreAVL.raiz = arvoreAVL.inserir(arvoreAVL.raiz, chave);
      }
         System.out.println("Percurso em order da árvore AVL: ");
-     arvoreAVL.PercursoEmOrdem(arvoreAVL.raiz);
+     arvoreAVL.percursoEmOrdem(arvoreAVL.raiz);
 
     }
 }
